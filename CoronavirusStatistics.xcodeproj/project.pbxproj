@@ -15,6 +15,8 @@
 		9D8E9B7024C1E0ED00DB6DAB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B6F24C1E0ED00DB6DAB /* TabBarController.swift */; };
 		9D8E9B7324C1E12900DB6DAB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B7224C1E12900DB6DAB /* SearchViewController.swift */; };
 		9D8E9B7524C1E13E00DB6DAB /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B7424C1E13E00DB6DAB /* SearchDetailViewController.swift */; };
+		9D8E9B7824C1E1E400DB6DAB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E9B7624C1E1E400DB6DAB /* LICENSE */; };
+		9D8E9B7924C1E1E400DB6DAB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E9B7724C1E1E400DB6DAB /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		9D8E9B6F24C1E0ED00DB6DAB /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		9D8E9B7224C1E12900DB6DAB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9D8E9B7424C1E13E00DB6DAB /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
+		9D8E9B7624C1E1E400DB6DAB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		9D8E9B7724C1E1E400DB6DAB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 		9D8E9B5924C1DF1300DB6DAB /* CoronavirusStatistics */ = {
 			isa = PBXGroup;
 			children = (
+				9D8E9B7724C1E1E400DB6DAB /* README.md */,
+				9D8E9B7624C1E1E400DB6DAB /* LICENSE */,
 				9D8E9B5A24C1DF1300DB6DAB /* AppDelegate.swift */,
 				9D8E9B5C24C1DF1300DB6DAB /* SceneDelegate.swift */,
 				9D8E9B6E24C1E0DB00DB6DAB /* Views */,
@@ -147,7 +153,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8E9B7824C1E1E400DB6DAB /* LICENSE in Resources */,
 				9D8E9B6724C1DF1500DB6DAB /* LaunchScreen.storyboard in Resources */,
+				9D8E9B7924C1E1E400DB6DAB /* README.md in Resources */,
 				9D8E9B6424C1DF1500DB6DAB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
