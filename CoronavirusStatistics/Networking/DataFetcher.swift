@@ -9,7 +9,7 @@
 import Foundation
 
 struct DataFetcher {
-    func fetchDataFromURl(url: URL, completion: @escaping (WrappedResponse?) -> Void) {
+    func fetchDataFromURl<Type: Codable>(url: URL, completion: @escaping (Type?) -> Void) {
         let headers = [
             "x-rapidapi-host": API.host,
             "x-rapidapi-key": API.key
@@ -25,7 +25,7 @@ struct DataFetcher {
             let jsonDecoder = JSONDecoder()
             jsonDecoder.dateDecodingStrategy = .iso8601
             
-            let wrappedResponse = try? jsonDecoder.decode(WrappedResponse.self, from: data)
+            let wrappedResponse = try? jsonDecoder.decode(Type.self, from: data)
             
             completion(wrappedResponse)
         }

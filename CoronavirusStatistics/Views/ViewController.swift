@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         setupAutoLayout()
         setupCollectionViews()
         
-        dataFetcher.fetchDataFromURl(url: API.worldStatisticsURL!) { (response) in
+        dataFetcher.fetchDataFromURl(url: API.worldStatisticsURL!) { (response: WrappedResponse?) in
             if let response = response {
                 DispatchQueue.main.sync {
                     self.worldData = response.response.first
@@ -117,7 +117,7 @@ class ViewController: UIViewController {
                 return
             }
         }
-        dataFetcher.fetchDataFromURl(url: API.countryStatisticsURL!) { (response) in
+        dataFetcher.fetchDataFromURl(url: API.countryStatisticsURL!) { (response: WrappedResponse?) in
             if let response = response {
                 DispatchQueue.main.sync {
                     self.data = response.response
