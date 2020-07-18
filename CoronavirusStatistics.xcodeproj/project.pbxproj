@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D6E969224C2A86600167EEF /* CountriesWrappedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E969124C2A86600167EEF /* CountriesWrappedResponse.swift */; };
 		9D8E9B5B24C1DF1300DB6DAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B5A24C1DF1300DB6DAB /* AppDelegate.swift */; };
 		9D8E9B5D24C1DF1300DB6DAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B5C24C1DF1300DB6DAB /* SceneDelegate.swift */; };
 		9D8E9B5F24C1DF1300DB6DAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B5E24C1DF1300DB6DAB /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D6E969124C2A86600167EEF /* CountriesWrappedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesWrappedResponse.swift; sourceTree = "<group>"; };
 		9D8E9B5724C1DF1300DB6DAB /* Coronavirus Statistics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coronavirus Statistics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E9B5A24C1DF1300DB6DAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8E9B5C24C1DF1300DB6DAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				9D8E9B8324C1E2B500DB6DAB /* WrappedResponse.swift */,
+				9D6E969124C2A86600167EEF /* CountriesWrappedResponse.swift */,
 				9D8E9B8524C1E2C700DB6DAB /* Response.swift */,
 				9D8E9B8724C1E2DB00DB6DAB /* Cases.swift */,
 				9D8E9B8924C1E2EE00DB6DAB /* Continent.swift */,
@@ -239,6 +242,7 @@
 				9D8E9B5F24C1DF1300DB6DAB /* ViewController.swift in Sources */,
 				9D8E9B9024C1E34500DB6DAB /* TopStatistics.swift in Sources */,
 				9D8E9B7F24C1E28100DB6DAB /* WorldCollectionViewCell.swift in Sources */,
+				9D6E969224C2A86600167EEF /* CountriesWrappedResponse.swift in Sources */,
 				9D8E9B8624C1E2C700DB6DAB /* Response.swift in Sources */,
 				9D8E9B7024C1E0ED00DB6DAB /* TabBarController.swift in Sources */,
 				9D8E9B8E24C1E33100DB6DAB /* Tests.swift in Sources */,
