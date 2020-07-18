@@ -55,17 +55,17 @@ class WorldCollectionViewCell: UICollectionViewCell {
             title = "Cases"
             color = .label
             cases = data.cases.total
-            today = data.cases.new ?? " no information"
+            today = data.cases.new ?? " no info"
         case 1:
             title = "Deaths"
             color = .red
             cases = data.deaths.total
-            today = data.deaths.new ?? " no information"
+            today = data.deaths.new ?? " no info"
         case 2:
             title = "Recovered"
             color = .green
             cases = data.cases.recovered
-            today = " no information" //the api does not provide daily updates of recovered patients yet
+            today = " no info" //the api does not provide daily updates of recovered patients yet
         default:
             fatalError()
         }
