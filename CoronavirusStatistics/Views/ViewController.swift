@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         let worldCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         worldCollectionView.translatesAutoresizingMaskIntoConstraints = false
         worldCollectionView.backgroundColor = .clear
+        worldCollectionView.isPagingEnabled = true
         
         return worldCollectionView
     }()
@@ -49,6 +50,7 @@ class ViewController: UIViewController {
         let topCasesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         topCasesCollectionView.translatesAutoresizingMaskIntoConstraints = false
         topCasesCollectionView.backgroundColor = .clear
+        topCasesCollectionView.isPagingEnabled = true
         
         return topCasesCollectionView
     }()
@@ -59,6 +61,7 @@ class ViewController: UIViewController {
         let topDeathsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         topDeathsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         topDeathsCollectionView.backgroundColor = .clear
+        topDeathsCollectionView.isPagingEnabled = true
         
         return topDeathsCollectionView
     }()
@@ -69,6 +72,7 @@ class ViewController: UIViewController {
         let topRecoveredCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         topRecoveredCollectionView.translatesAutoresizingMaskIntoConstraints = false
         topRecoveredCollectionView.backgroundColor = .clear
+        topRecoveredCollectionView.isPagingEnabled = true
         
         return topRecoveredCollectionView
     }()
@@ -212,25 +216,25 @@ class ViewController: UIViewController {
             worldStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             worldStackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40),
             worldStackView.heightAnchor.constraint(equalToConstant: 200),
-            worldStackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.2)
+            worldStackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
         NSLayoutConstraint.activate([
             topCasesCollectionView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             topCasesCollectionView.topAnchor.constraint(equalTo: worldStackView.bottomAnchor),
             topCasesCollectionView.heightAnchor.constraint(equalToConstant: 150),
-            topCasesCollectionView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.2)
+            topCasesCollectionView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
         NSLayoutConstraint.activate([
             topDeathsCollectionView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             topDeathsCollectionView.topAnchor.constraint(equalTo: topCasesCollectionView.bottomAnchor),
             topDeathsCollectionView.heightAnchor.constraint(equalToConstant: 150),
-            topDeathsCollectionView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.2)
+            topDeathsCollectionView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
         NSLayoutConstraint.activate([
             topRecoveredCollectionView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             topRecoveredCollectionView.topAnchor.constraint(equalTo: topDeathsCollectionView.bottomAnchor),
             topRecoveredCollectionView.heightAnchor.constraint(equalToConstant: 150),
-            topRecoveredCollectionView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.2)
+            topRecoveredCollectionView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
     }
     func setupCollectionViews() {
@@ -297,13 +301,28 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 extension ViewController: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == worldCollectionView {
+            return 30
+        } else {
+            return 30
+        }
+    }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == worldCollectionView {
-            return CGSize(width: UIScreen.main.bounds.width / 2.5, height: 120)
+            return CGSize(width: UIScreen.main.bounds.width / 2 - 30, height: 120)
         } else {
-            return CGSize(width: UIScreen.main.bounds.width / 1.2, height: 120)
+            return CGSize(width: UIScreen.main.bounds.width - 30, height: 120)
         }
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+          if collectionView == worldCollectionView {
+                  return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+              } else {
+                  return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+              }
     }
 }
