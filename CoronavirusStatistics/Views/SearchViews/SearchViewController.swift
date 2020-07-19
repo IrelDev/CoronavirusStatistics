@@ -10,7 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
     let dataFetcher = DataFetcher()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     var countries: [String] = []
+    var countriesSearchResult: [String] = []
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -22,8 +25,10 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupNavigationController()
         setupTableView()
+        setupSearchController()
         
         dataFetcher.fetchDataFromURl(url: API.countryListURL!) { (response: CountriesWrappedResponse?) in
             if let response = response {
@@ -42,6 +47,7 @@ class SearchViewController: UIViewController {
     func setupNavigationController() {
         self.title = "Countries"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .secondarySystemGroupedBackground
     }
     func setupTableView() {
         tableView.allowsSelection = false
@@ -63,16 +69,48 @@ class SearchViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        countries.count
+        if searchController.isActive && searchController.searchBar.text?.count != 0 {
+            return countriesSearchResult.count
+        }
+        return countries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        cell.textLabel?.text = countries[indexPath.row]
+        let country: String
+        if searchController.isActive && searchController.searchBar.text?.count != 0 {
+            country = countriesSearchResult[indexPath.row]
+        } else {
+            country = countries[indexPath.row]
+        }
+        cell.textLabel?.text = country
         cell.textLabel?.font = cell.textLabel?.font.withSize(20)
         cell.backgroundColor = .clear
         
         return cell
+    }
+}
+// MARK: - UISearchController
+extension SearchViewController: UISearchResultsUpdating {
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "Search countries"
+        
+        searchController.searchBar.tintColor = .label
+        searchController.searchBar.barTintColor = .secondarySystemGroupedBackground
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        filterResults(for: searchController.searchBar.text ?? "")
+    }
+    func filterResults(for searchText: String) {
+        countriesSearchResult = countries.filter {
+            $0.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
     }
 }
