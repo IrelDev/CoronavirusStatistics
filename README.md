@@ -5,12 +5,17 @@
   <img src = "https://img.shields.io/badge/license-MIT-blue.svg" />
 </p>
 
-## CoronavirusStatistics
-iOS app that gets the latest coronavirus statistics built in Swift & UIKit.
+# CoronavirusStatistics
+iOS application that gets the latest coronavirus statistics built with Swift & UIKit.
 The data was provided by [this](https://rapidapi.com/api-sports/api/covid-193) API.
 
 ## Installation
-To install Coronavirus Statistics just clone the `master` branch and change the API key.
+To install Coronavirus Statistics just clone the `master` branch, change the API key and build the project yourself.
+
+## Demo
+<p align="center">  
+<img src = "Assets/Demo.gif" /><br>
+</p>
 
 ## License
 CoronavirusStatistics is available under the MIT license, see the [LICENSE](LICENSE) file for more information.
