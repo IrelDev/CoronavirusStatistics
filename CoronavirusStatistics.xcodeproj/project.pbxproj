@@ -29,6 +29,7 @@
 		9D8E9B9024C1E34500DB6DAB /* TopStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B8F24C1E34500DB6DAB /* TopStatistics.swift */; };
 		9D8E9B9424C1E37400DB6DAB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B9324C1E37400DB6DAB /* API.swift */; };
 		9D8E9B9624C1E38400DB6DAB /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E9B9524C1E38400DB6DAB /* DataFetcher.swift */; };
+		9DDCF49C24C55BEC0090C3A3 /* UIStackViewBackgroundColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCF49B24C55BEC0090C3A3 /* UIStackViewBackgroundColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		9D8E9B8F24C1E34500DB6DAB /* TopStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStatistics.swift; sourceTree = "<group>"; };
 		9D8E9B9324C1E37400DB6DAB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9D8E9B9524C1E38400DB6DAB /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		9DDCF49B24C55BEC0090C3A3 /* UIStackViewBackgroundColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewBackgroundColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				9D8E9B6E24C1E0DB00DB6DAB /* Views */,
 				9D8E9B8224C1E2A300DB6DAB /* Models */,
 				9D8E9B9224C1E36000DB6DAB /* Networking */,
+				9DDCF49A24C55BC60090C3A3 /* Extensions */,
 				9D8E9B6324C1DF1500DB6DAB /* Assets.xcassets */,
 				9D8E9B6524C1DF1500DB6DAB /* LaunchScreen.storyboard */,
 				9D8E9B6824C1DF1500DB6DAB /* Info.plist */,
@@ -161,6 +164,14 @@
 				9D8E9B9524C1E38400DB6DAB /* DataFetcher.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		9DDCF49A24C55BC60090C3A3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9DDCF49B24C55BEC0090C3A3 /* UIStackViewBackgroundColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DDCF49C24C55BEC0090C3A3 /* UIStackViewBackgroundColorExtension.swift in Sources */,
 				9D8E9B8124C1E29000DB6DAB /* TopCollectionViewCell.swift in Sources */,
 				9D8E9B9624C1E38400DB6DAB /* DataFetcher.swift in Sources */,
 				9D8E9B7324C1E12900DB6DAB /* SearchViewController.swift in Sources */,
