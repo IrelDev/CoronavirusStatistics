@@ -23,6 +23,10 @@ class SearchViewController: UIViewController {
         return tableView
     }()
     
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.view.setNeedsLayout()
+        navigationController?.view.layoutIfNeeded()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +54,6 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .secondarySystemGroupedBackground
     }
     func setupTableView() {
-        tableView.allowsSelection = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -88,6 +91,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let country: String
+        if searchController.isActive && searchController.searchBar.text?.count != 0 {
+            country = countriesSearchResult[indexPath.row]
+        } else {
+            country = countries[indexPath.row]
+        }
+        let viewController = SearchDetailViewController()
+        viewController.country = country
+        navigationController?.pushViewController(viewController, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 // MARK: - UISearchController
