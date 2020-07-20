@@ -15,4 +15,11 @@ struct API {
     static let countryStatisticsURL = URL(string: "https://covid-193.p.rapidapi.com/statistics")
     static let worldStatisticsURL = URL(string: "https://covid-193.p.rapidapi.com/statistics?country=all")
     static let countryListURL = URL(string: "https://covid-193.p.rapidapi.com/countries")
+    
+    static func createLinkForCountry(country: String) -> URL? {
+        let stringUrl = API.countryStatisticsURL!.absoluteString + "?country=\(country.lowercased())"
+        let url = URL(string: stringUrl)
+        
+        return url
+    }
 }
