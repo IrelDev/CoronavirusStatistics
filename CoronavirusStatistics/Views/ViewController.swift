@@ -33,8 +33,19 @@ class ViewController: UIViewController {
         worldCollectionView.translatesAutoresizingMaskIntoConstraints = false
         worldCollectionView.backgroundColor = .clear
         worldCollectionView.isPagingEnabled = true
+        worldCollectionView.showsHorizontalScrollIndicator = false
         
         return worldCollectionView
+    }()
+    private let worldPageControl: UIPageControl = {
+        let worldPageControl = UIPageControl()
+        worldPageControl.currentPage = 0
+        worldPageControl.numberOfPages = 2
+        
+        worldPageControl.pageIndicatorTintColor = .lightGray
+        worldPageControl.currentPageIndicatorTintColor = .systemPink
+        
+        return worldPageControl
     }()
     private let worldStackView: UIStackView = {
         let worldStackView = UIStackView()
@@ -54,6 +65,7 @@ class ViewController: UIViewController {
         
         return topCasesCollectionView
     }()
+
     private let topDeathsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -190,9 +202,12 @@ class ViewController: UIViewController {
         
         scrollView.addSubview(worldLabel)
         scrollView.addSubview(worldCollectionView)
+        scrollView.addSubview(worldPageControl)
         
         worldStackView.addArrangedSubview(worldLabel)
         worldStackView.addArrangedSubview(worldCollectionView)
+        worldStackView.addArrangedSubview(worldPageControl)
+        
         scrollView.addSubview(worldStackView)
         
         scrollView.addSubview(topCasesCollectionView)
@@ -215,7 +230,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             worldStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             worldStackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40),
-            worldStackView.heightAnchor.constraint(equalToConstant: 200),
+            worldStackView.heightAnchor.constraint(equalToConstant: 220),
             worldStackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
         NSLayoutConstraint.activate([
@@ -299,6 +314,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return cell
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let witdh = scrollView.frame.width - (scrollView.contentInset.left * 2)
+        let index = scrollView.contentOffset.x / witdh
+        let roundedIndex = round(index)
+        
+        if scrollView == worldCollectionView {
+            self.worldPageControl.currentPage = Int(roundedIndex)
+        }
+    }
 }
 extension ViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout
@@ -319,10 +343,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-          if collectionView == worldCollectionView {
-                  return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-              } else {
-                  return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-              }
+        if collectionView == worldCollectionView {
+            return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        } else {
+            return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        }
     }
 }
