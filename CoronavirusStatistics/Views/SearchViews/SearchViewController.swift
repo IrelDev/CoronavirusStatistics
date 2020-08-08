@@ -22,6 +22,10 @@ class SearchViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        return activityIndicator
+    }()
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.view.setNeedsLayout()
@@ -29,24 +33,28 @@ class SearchViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         
-        setupNavigationController()
-        setupTableView()
-        setupSearchController()
-        
-        dataFetcher.fetchDataFromURl(url: API.countryListURL!) { (response: CountriesWrappedResponse?) in
+        dataFetcher.fetchDataFromURl(url: API.countryListURL!) { [self] (response: CountriesWrappedResponse?) in
             if let response = response {
                 DispatchQueue.main.sync {
-                    self.countries = response.response
+                    countries = response.response
                     
-                    UIView.transition(with: self.tableView,
+                    UIView.transition(with: tableView,
                                       duration: 1,
                                       options: .transitionCrossDissolve,
-                                      animations: { self.tableView.reloadData() })
+                                      animations: { tableView.reloadData() })
+                    activityIndicator.stopAnimating()
                 }
                 return
             }
         }
+    }
+    func setupViews() {
+        setupNavigationController()
+        setupTableView()
+        setupSearchController()
+        setupActivityIndicatorView()
     }
     func setupNavigationController() {
         self.title = "Countries"
@@ -67,6 +75,10 @@ class SearchViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+    func setupActivityIndicatorView() {
+        tableView.backgroundView = activityIndicator
+        if countries.count == 0 { activityIndicator.startAnimating() }
     }
 }
 // MARK: - UITableViewDelegate, UITableViewDataSource
