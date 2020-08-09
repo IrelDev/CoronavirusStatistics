@@ -120,28 +120,28 @@ class ViewController: UIViewController {
         setupAutoLayout()
         setupCollectionViews()
         
-        dataFetcher.fetchDataFromURl(url: API.worldStatisticsURL!) { (response: WrappedResponse?) in
+        dataFetcher.fetchDataFromURl(url: API.worldStatisticsURL!) { [self] (response: WrappedResponse?) in
             if let response = response {
                 DispatchQueue.main.sync {
-                    self.worldData = response.response.first
+                    worldData = response.response.first
                     
-                    self.worldCollectionView.performBatchUpdates({
+                    worldCollectionView.performBatchUpdates({
                         let indexSet = IndexSet(integersIn: 0...0)
-                        self.worldCollectionView.reloadSections(indexSet)
+                        worldCollectionView.reloadSections(indexSet)
                     })
                 }
                 return
             }
         }
-        dataFetcher.fetchDataFromURl(url: API.countryStatisticsURL!) { (response: WrappedResponse?) in
+        dataFetcher.fetchDataFromURl(url: API.countryStatisticsURL!) { [self] (response: WrappedResponse?) in
             if let response = response {
                 DispatchQueue.main.sync {
-                    self.data = response.response
+                    data = response.response
                     
-                    self.normalizeData(data: &self.data)
-                    self.calculateDataSetsForTopCollectionViews(data: self.data)
+                    normalizeData(data: &data)
+                    calculateDataSetsForTopCollectionViews(data: data)
                     
-                    self.reloadCollectionViewsDataWithAnimation()
+                    reloadCollectionViewsDataWithAnimation()
                 }
                 return
             }
